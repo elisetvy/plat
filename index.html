@@ -20,13 +20,13 @@
             <table class="screenings-table">
               <tr>
                 <td class="empty column-1">Empty</td>
-                <td>Sun<br /><br />5/14</td>
-                <td>Mon<br /><br />5/15</td>
-                <td>Tues<br /><br />5/16</td>
-                <td>Wed<br /><br />5/17</td>
-                <td>Thurs<br /><br />5/18</td>
-                <td>Fri<br /><br />5/19</td>
-                <td>Sat<br /><br />5/20</td>
+                <td>Sun<br /><br />6/25</td>
+                <td>Mon<br /><br />6/26</td>
+                <td>Tues<br /><br />6/27</td>
+                <td>Wed<br /><br />6/28</td>
+                <td>Thurs<br /><br />6/29</td>
+                <td>Fri<br /><br />6/30</td>
+                <td>Sat<br /><br />7/1</td>
               </tr>
               <tr>
                 <td class="column-1">Bones and All</td>
@@ -161,14 +161,15 @@
             <td class="cart-info">
               <strong>Bones and All</strong><br />
               <small
-                >Tuesday May 16, 2023
+                >Tuesday June 27, 2023
                 <span class="cart-time">18:30</span></small
               >
             </td>
             <td class="cart-info">
-              <input type="number" min="0" max="99" value="1" />
+              <button id="decrease">-</button><span id="numberOfTickets">1</span
+              ><button id="increase">+</button>
             </td>
-            <td class="cart-info">$10.00</td>
+            <td class="cart-info" id="item-total">$10.00</td>
           </tr>
           <tr>
             <td class="empty"></td>
@@ -178,7 +179,7 @@
           <tr>
             <td class="empty"></td>
             <th class="cart-info">Total</th>
-            <th class="cart-info">$10.00</th>
+            <th class="cart-info" id="cart-total">$10.00</th>
           </tr>
         </table>
       </div>
