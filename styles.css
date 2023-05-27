@@ -95,13 +95,6 @@ a:visited {
   color: black;
 }
 
-.collapsible {
-}
-
-.active,
-.collapsible:hover {
-}
-
 .content {
   max-height: 0;
   overflow: hidden;
@@ -118,6 +111,11 @@ a:visited {
 .rating,
 .imdb {
   padding: 0 10px;
+}
+
+.imdb {
+  background-color: #f3ce13;
+  border-radius: 5px;
 }
 
 .info {
