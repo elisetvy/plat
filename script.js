@@ -12,39 +12,20 @@ for (let i = 0; i < collapsible.length; i++) {
   });
 }
 
-// const numberOfTickets = document.getElementById("numberOfTickets");
-// const decreaseButton = document.getElementById("decrease");
-// const increaseButton = document.getElementById("increase");
-// const itemTotal = document.getElementById("item-total");
-// const cartTotal = document.getElementById("cart-total");
-
-// decreaseButton.addEventListener("click", () => {
-//   let currentNum = parseInt(numberOfTickets.textContent);
-//   if (currentNum > 0) {
-//     currentNum--;
-//     numberOfTickets.textContent = currentNum;
-//     itemTotal.textContent = "$" + currentNum * 10 + ".00";
-//     cartTotal.textContent = itemTotal.textContent;
-//   }
-// });
-
-// increaseButton.addEventListener("click", () => {
-//   let currentNum = parseInt(numberOfTickets.textContent);
-//   if (currentNum < 100) {
-//     currentNum++;
-//     numberOfTickets.textContent = currentNum;
-//     itemTotal.textContent = "$" + currentNum * 10 + ".00";
-//     cartTotal.textContent = itemTotal.textContent;
-//   }
-// });
-
 const cartTable = document.querySelector(".cart-table");
 
 const cartTotal = document.getElementById("cart-total");
 
-const itemTotalCells = document.querySelectorAll("#item-total");
+const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
-cartTable.addEventListener("click", function (event) {
+for (let i = 0; i < addToCartButtons.length; i++) {
+  let button = addToCartButtons[i];
+  button.addEventListener("click", addToCartClicked);
+}
+
+cartTable.addEventListener("click", updateCart);
+
+function updateCart(event) {
   const target = event.target;
   if (target.id === "increase") {
     const num = target.parentNode.querySelector("#numberOfTickets");
@@ -56,10 +37,18 @@ cartTable.addEventListener("click", function (event) {
   if (target.id === "decrease") {
     const num = target.parentNode.querySelector("#numberOfTickets");
     decrementNumber(num);
+    if (num.textContent === "0") {
+      num.parentElement.parentElement.remove();
+    }
     let itemTotal = target.parentNode.nextElementSibling;
     let itemPrice = +num.textContent * 10;
     itemTotal.textContent = "$" + itemPrice + ".00";
   }
+  calculateCartTotal();
+}
+
+function calculateCartTotal() {
+  let itemTotalCells = document.querySelectorAll("#item-total");
 
   let dataArray = [];
 
@@ -68,10 +57,14 @@ cartTable.addEventListener("click", function (event) {
     dataArray.push(data);
   });
 
-  dataArray = dataArray.reduce((x, y) => x + y);
+  if (dataArray.length === 0) {
+    cartTotal.textContent = "$0.00";
+  } else {
+    dataArray = dataArray.reduce((x, y) => x + y);
 
-  cartTotal.textContent = "$" + dataArray + ".00";
-});
+    cartTotal.textContent = "$" + dataArray + ".00";
+  }
+}
 
 function incrementNumber(element) {
   let number = parseInt(element.textContent);
@@ -87,4 +80,47 @@ function decrementNumber(element) {
     number--;
     element.textContent = number;
   }
+}
+
+function addToCartClicked(event) {
+  let button = event.target;
+  let title = button.parentElement.querySelector(".movie-name").textContent;
+  let day = button.parentElement.querySelector(".movie-day").textContent;
+  let date = button.parentElement.querySelector(".movie-date").textContent;
+  let time = button.parentElement.querySelector(".movie-time").textContent;
+  addToCart(title, day, date, time);
+  updateCart();
+}
+
+function addToCart(title, day, date, time) {
+  let cartRow = document.createElement("tr");
+  cartRow.classList.add("cart-row");
+  let cartItem = document.getElementsByClassName("cart-table")[0];
+  let cartItemNames = document.getElementsByClassName("item-title");
+  let cartItemDays = document.getElementsByClassName("item-day");
+  for (let i = 0; i < cartItemNames.length; i++) {
+    if (
+      cartItemNames[i].textContent === title &&
+      cartItemDays[i].textContent.split(" ")[0] === day
+    ) {
+      alert("This item is already in your cart! ;)");
+      return;
+    }
+  }
+  let cartRowContent = `
+  <tr class="cart-row">
+  <td class="cart-info">
+    <strong class="item-title">${title}</strong><br />
+    <small class="item-day">${day} ${date} <span class="cart-time">${time}</span></small>
+  </td>
+  <td class="cart-info">
+    <button id="decrease">-</button>
+    <span id="numberOfTickets">1</span>
+    <button id="increase">+</button>
+  </td>
+  <td class="cart-info" id="item-total">$10.00</td>
+  </tr>`;
+  cartRow.innerHTML = cartRowContent;
+  cartItem.prepend(cartRow);
+  calculateCartTotal();
 }

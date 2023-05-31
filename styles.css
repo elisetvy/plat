@@ -16,13 +16,9 @@
   align-items: center;
 }
 
-.table {
+.page-1-container {
   display: table;
   width: 50%;
-}
-
-.row {
-  display: table-row;
 }
 
 .header {
@@ -61,8 +57,26 @@ td:not(.column-1, .minutes, .rating, .imdb, .cart-info, .total-price) {
   border: 1px solid white;
 }
 
+.add-to-cart {
+  display: none;
+}
+
+.time:hover .movie-time {
+  display: none;
+}
+
+.time:hover .add-to-cart {
+  display: inline-block;
+}
+
 .time:hover {
   background-color: #f3ce13;
+}
+
+.movie-name,
+.movie-day,
+.movie-date {
+  display: none;
 }
 
 .empty {
