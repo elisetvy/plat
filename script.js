@@ -14,9 +14,15 @@ for (let i = 0; i < collapsible.length; i++) {
 
 const cartTable = document.querySelector(".cart-table");
 
+const cartTotalContainer = document.getElementById("cart-total-container");
+
 const cartTotal = document.getElementById("cart-total");
 
+const emptyCart = document.getElementById("empty-cart-message");
+
 const addToCartButtons = document.getElementsByClassName("add-to-cart");
+
+const purchase = document.getElementById("purchase");
 
 for (let i = 0; i < addToCartButtons.length; i++) {
   let button = addToCartButtons[i];
@@ -57,12 +63,16 @@ function calculateCartTotal() {
     dataArray.push(data);
   });
 
-  if (dataArray.length === 0) {
-    cartTotal.textContent = "$0.00";
-  } else {
+  if (dataArray.length !== 0) {
     dataArray = dataArray.reduce((x, y) => x + y);
-
+    cartTotalContainer.classList.remove("hide");
+    emptyCart.style.display = "none";
+    purchase.style.display = "block";
     cartTotal.textContent = "$" + dataArray + ".00";
+  } else {
+    emptyCart.style.display = "block";
+    purchase.style.display = "none";
+    cartTotalContainer.classList.add("hide");
   }
 }
 
@@ -103,10 +113,13 @@ function addToCart(title, day, date, time) {
       cartItemNames[i].textContent === title &&
       cartItemDays[i].textContent.split(" ")[0] === day
     ) {
-      alert("This item is already in your cart! ;)");
+      alert(
+        "This item is already in your cart!  You can update ticket quantities in your cart ;)"
+      );
       return;
     }
   }
+
   let cartRowContent = `
   <tr class="cart-row">
   <td class="cart-info">
@@ -123,4 +136,17 @@ function addToCart(title, day, date, time) {
   cartRow.innerHTML = cartRowContent;
   cartItem.prepend(cartRow);
   calculateCartTotal();
+  alert(
+    `1 ticket for ${title} on ${day} ${date} at ${time} has been added to your cart!`
+  );
+}
+
+purchase.addEventListener("click", completePurchase);
+
+function completePurchase(event) {
+  alert("Thanks for supporting The Art!");
+  let cartItems = document.getElementsByClassName("cart-row")[0];
+  while (cartItems.hasChildNodes()) {
+    cartItems.removeChild(cartItems.firstChild);
+  }
 }

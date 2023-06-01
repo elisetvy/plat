@@ -12,7 +12,9 @@
       <div class="page-1-container">
         <div>
           <div class="header">
-            NOW PLAYING AT<span class="plat"> PLAYA LARGA ART THEATER</span>
+            <i>now playing</i> at<span class="plat">
+              PLAYA LARGA ART THEATER</span
+            >
           </div>
         </div>
         <div>
@@ -281,7 +283,7 @@
     </div>
     <div class="page-2">
       <div class="cart">
-        <h2>Cart Summary</h2>
+        <p class="cart-summary">Cart Summary</p>
         <table class="cart-table">
           <!-- <tr class="cart-row">
             <td class="cart-info">
@@ -316,10 +318,30 @@
             <td class="empty"></td>
             <td class="empty"></td>
           </tr>
-          <tr>
+          <div class="empty-cart" id="empty-cart">
+            <p class="empty-cart-message" id="empty-cart-message">
+              <br /><br /><img
+                class="gif"
+                src="/Users/elisengo/Desktop/p yurzy/Images/giphy.gif"
+              />
+            </p>
+          </div>
+          <tr class="cart-total-container hide" id="cart-total-container">
             <td class="empty"></td>
             <th class="cart-info">Total</th>
             <th class="cart-info" id="cart-total">$0.00</th>
+          </tr>
+          <tr>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="purchase hide" id="purchase">
+              <button>Purchase</button>
+            </td>
           </tr>
         </table>
       </div>

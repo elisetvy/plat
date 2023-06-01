@@ -22,14 +22,13 @@
 }
 
 .header {
-  display: table-cell;
   text-align: center;
   font-size: 30px;
-  font-weight: bold;
 }
 
 .plat {
   color: #ff3c38;
+  font-weight: bold;
 }
 
 .screenings {
@@ -41,7 +40,16 @@ table {
   border-collapse: collapse;
 }
 
-td:not(.column-1, .minutes, .rating, .imdb, .cart-info, .total-price) {
+td:not(
+    .column-1,
+    .minutes,
+    .rating,
+    .imdb,
+    .cart-info,
+    .total-price,
+    .empty-cart-message,
+    .purchase
+  ) {
   width: calc(100% / 10);
   padding: 1rem;
   text-align: center;
@@ -136,7 +144,6 @@ a:visited {
   margin-top: 3rem;
   text-align: center;
   font-size: 30px;
-  font-weight: bold;
 }
 
 .page-2 {
@@ -151,6 +158,11 @@ a:visited {
 
 .cart {
   width: 50%;
+}
+
+.cart-summary {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .cart-table {
@@ -182,4 +194,26 @@ a:visited {
   width: 15%;
   padding: 1rem;
   text-align: right;
+}
+
+.empty-cart-message {
+  font-size: 30px;
+  color: #ff3c38;
+}
+
+.gif {
+  width: 40%;
+  height: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.purchase {
+  text-align: right;
+}
+
+.purchase button {
+  padding: 5px 10px;
 }
