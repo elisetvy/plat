@@ -65,13 +65,15 @@ function calculateCartTotal() {
 
   if (dataArray.length !== 0) {
     dataArray = dataArray.reduce((x, y) => x + y);
+    cartTable.classList.remove("hide");
     cartTotalContainer.classList.remove("hide");
     emptyCart.style.display = "none";
-    purchase.style.display = "block";
+    purchase.classList.remove("hide");
     cartTotal.textContent = "$" + dataArray + ".00";
   } else {
+    cartTable.classList.add("hide");
     emptyCart.style.display = "block";
-    purchase.style.display = "none";
+    purchase.classList.add("hide");
     cartTotalContainer.classList.add("hide");
   }
 }
@@ -145,8 +147,5 @@ purchase.addEventListener("click", completePurchase);
 
 function completePurchase(event) {
   alert("Thanks for supporting The Art!");
-  let cartItems = document.getElementsByClassName("cart-row")[0];
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild);
-  }
+  cartTable.remove();
 }
