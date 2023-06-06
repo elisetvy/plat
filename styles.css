@@ -8,7 +8,7 @@
   margin: 0;
 }
 
-.page-1 {
+.landing {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -16,8 +16,9 @@
   align-items: center;
 }
 
-.page-1-container {
-  display: table;
+/* Define landing page width */
+
+.landing-container {
   width: 50%;
 }
 
@@ -39,6 +40,8 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+
+/* Table cell styling */
 
 td:not(
     .column-1,
@@ -65,13 +68,19 @@ td:not(
   border: 1px solid white;
 }
 
+/* Hide add-to-cart buttons */
+
 .add-to-cart {
   display: none;
 }
 
+/* Hide showtime */
+
 .time:hover .movie-time {
   display: none;
 }
+
+/* Display add-to-cart button */
 
 .time:hover .add-to-cart {
   display: inline-block;
@@ -81,11 +90,15 @@ td:not(
   background-color: #f3ce13;
 }
 
+/* Hide movie info */
+
 .movie-name,
 .movie-day,
 .movie-date {
   display: none;
 }
+
+/* Cells that need to take up space but be invisible */
 
 .empty {
   opacity: 0;
@@ -109,6 +122,8 @@ td:not(
   justify-content: space-between;
 }
 
+/* Remove underline from links */
+
 a {
   text-decoration: none;
 }
@@ -116,6 +131,8 @@ a {
 a:visited {
   color: black;
 }
+
+/* Hide movie descriiptions */
 
 .content {
   max-height: 0;
@@ -156,10 +173,9 @@ a:visited {
   text-align: center;
 }
 
+/* Define cart width */
+
 .cart {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   width: 50%;
   height: auto;
 }
@@ -175,6 +191,8 @@ a:visited {
   border-collapse: collapse;
 }
 
+/* Cart item info takes up most of the width of the row */
+
 .cart-info:nth-child(1) {
   width: 60%;
   padding: 1rem;
@@ -185,6 +203,8 @@ a:visited {
   background-color: #f3ce13;
 }
 
+/* Cart item quantity */
+
 .cart-info:nth-child(2) {
   width: 25%;
   padding: 1rem;
@@ -193,6 +213,8 @@ a:visited {
 .cart-info:nth-child(2) button {
   margin: 0 15px;
 }
+
+/* Cart item total */
 
 .cart-info:nth-child(3) {
   width: 15%;
@@ -205,6 +227,8 @@ a:visited {
   height: auto;
   margin-bottom: 0;
 }
+
+/* Elements that need to be hidden and take up no space */
 
 .hide {
   display: none;

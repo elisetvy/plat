@@ -1,3 +1,5 @@
+// Collapse movie description
+
 const collapsible = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < collapsible.length; i++) {
@@ -31,6 +33,8 @@ for (let i = 0; i < addToCartButtons.length; i++) {
 
 cartTable.addEventListener("click", updateCart);
 
+// Increase or decrease item quantities - return updated subtotals and cart total
+
 function updateCart(event) {
   const target = event.target;
   if (target.id === "increase") {
@@ -52,6 +56,8 @@ function updateCart(event) {
   }
   calculateCartTotal();
 }
+
+// Create array of subtotals - return cart total
 
 function calculateCartTotal() {
   let itemTotalCells = document.querySelectorAll("#item-total");
@@ -94,6 +100,8 @@ function decrementNumber(element) {
   }
 }
 
+// Click add-to-cart button - collect movie title and showing day/date/time info
+
 function addToCartClicked(event) {
   let button = event.target;
   let title = button.parentElement.querySelector(".movie-name").textContent;
@@ -103,6 +111,8 @@ function addToCartClicked(event) {
   addToCart(title, day, date, time);
   updateCart();
 }
+
+// Create new row in cart table
 
 function addToCart(title, day, date, time) {
   let cartRow = document.createElement("tr");
@@ -142,6 +152,8 @@ function addToCart(title, day, date, time) {
     `1 ticket for ${title} on ${day} ${date} at ${time} has been added to your cart!`
   );
 }
+
+// Click purchase button - return alert and clear cart
 
 purchase.addEventListener("click", completePurchase);
 

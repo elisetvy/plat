@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-1">
-      <div class="page-1-container">
+    <!-- This is the landing page, which includes the theater name, showtimes table, screenings info, and theater info. -->
+    <div class="landing">
+      <div class="landing-container">
+        <!-- Below is the theater name. -->
         <div>
           <div class="header">
             <i>now playing</i> at<span class="plat">
@@ -17,6 +19,7 @@
             >
           </div>
         </div>
+        <!-- Below is the showtimes table. Users can use the table to add tickets to cart. -->
         <div>
           <div class="screenings">
             <table class="screenings-table">
@@ -189,6 +192,7 @@
             </table>
           </div>
         </div>
+        <!-- Below is screenings info. -->
         <div>
           <div class="movies">
             <div class="movie-1">
@@ -237,11 +241,11 @@
               <div class="content">
                 <p>
                   <br />
-                  Renowned musician Lydia Tár is days away from recording the
-                  symphony that will elevate her career. When all elements seem
-                  to conspire against her, Lydia's adopted daughter Petra
-                  becomes an integral emotional support for her struggling
-                  mother.
+                  Lydia Tár, the groundbreaking conductor of a major German
+                  Orchestra, is at the height of her career as she's preparing
+                  both a book launch and much-anticipated live performance of
+                  Mahler's Fifth Symphony. When Lydia is accused of misconduct,
+                  her life begins to unravel in an unusual way.
                   <br /><br />
                 </p>
               </div>
@@ -274,6 +278,7 @@
             </div>
           </div>
         </div>
+        <!-- Below is theater info. -->
         <div>
           <div class="info">
             2025 E 4th St<br />Playa Larga, CA 90814<br />(562) 438-5435
@@ -281,46 +286,21 @@
         </div>
       </div>
     </div>
+    <!-- This is the cart page. -->
     <div class="page-2">
       <div class="cart">
         <p class="cart-summary">Cart Summary</p>
+        <!-- Below is what is displayed when the cart is empty. -->
         <div class="empty-cart" id="empty-cart">
           <p class="empty-cart-message" id="empty-cart-message">
-            <br /><br /><img
+            <br /><br /><br /><img
               class="gif"
               src="/Users/elisengo/Desktop/p yurzy/Images/giphy.gif"
             />
           </p>
         </div>
+        <!-- Below is the cart table. -->
         <table class="cart-table hide">
-          <!-- <tr class="cart-row">
-            <td class="cart-info">
-              <strong class="item-title">Bones and All</strong><br />
-              <small class="item-day"
-                >Tuesday June 27, 2023
-                <span class="cart-time">18:30</span></small
-              >
-            </td>
-            <td class="cart-info">
-              <button id="decrease">-</button><span id="numberOfTickets">1</span
-              ><button id="increase">+</button>
-            </td>
-            <td class="cart-info" id="item-total">$10.00</td>
-          </tr>
-          <tr class="cart-row">
-            <td class="cart-info">
-              <strong class="item-title">Tár</strong><br />
-              <small class="item-day"
-                >Saturday July 1, 2023
-                <span class="cart-time">15:30</span></small
-              >
-            </td>
-            <td class="cart-info">
-              <button id="decrease">-</button><span id="numberOfTickets">1</span
-              ><button id="increase">+</button>
-            </td>
-            <td class="cart-info" id="item-total">$10.00</td>
-          </tr> -->
           <tr>
             <td class="empty"></td>
             <td class="empty"></td>
