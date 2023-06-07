@@ -86,7 +86,7 @@ function calculateCartTotal() {
 
 function incrementNumber(element) {
   let number = parseInt(element.textContent);
-  if (number < 100) {
+  if (number < 99) {
     number++;
     element.textContent = number;
   }
@@ -120,37 +120,53 @@ function addToCart(title, day, date, time) {
   let cartItem = document.getElementsByClassName("cart-table")[0];
   let cartItemNames = document.getElementsByClassName("item-title");
   let cartItemDays = document.getElementsByClassName("item-day");
+
   for (let i = 0; i < cartItemNames.length; i++) {
     if (
       cartItemNames[i].textContent === title &&
       cartItemDays[i].textContent.split(" ")[0] === day
     ) {
-      alert(
-        "This item is already in your cart!  You can update ticket quantities in your cart ;)"
-      );
+      alert("This item is already in your cart! ;)");
       return;
     }
   }
 
-  let cartRowContent = `
-  <tr class="cart-row">
-  <td class="cart-info">
-    <strong class="item-title">${title}</strong><br />
-    <small class="item-day">${day} ${date} <span class="cart-time">${time}</span></small>
-  </td>
-  <td class="cart-info">
-    <button id="decrease">-</button>
-    <span id="numberOfTickets">1</span>
-    <button id="increase">+</button>
-  </td>
-  <td class="cart-info" id="item-total">$10.00</td>
-  </tr>`;
-  cartRow.innerHTML = cartRowContent;
-  cartItem.prepend(cartRow);
-  calculateCartTotal();
-  alert(
-    `1 ticket for ${title} on ${day} ${date} at ${time} has been added to your cart!`
+  let userInput = prompt(
+    "How many tickets would you like to add to your cart?"
   );
+  let numberOfTickets = parseInt(userInput);
+  let itemSubtotal = "$" + (numberOfTickets * 10).toString() + ".00";
+
+  if (numberOfTickets > 0 && numberOfTickets < 100) {
+    if (numberOfTickets === 1) {
+      alert(
+        `1 ticket for ${title} on ${day} ${date} at ${time} has been added to your cart!`
+      );
+    } else if (numberOfTickets > 1) {
+      alert(
+        `${numberOfTickets} tickets for ${title} on ${day} ${date} at ${time} have been added to your cart!`
+      );
+    }
+
+    let cartRowContent = `
+    <tr class="cart-row">
+    <td class="cart-info">
+      <strong class="item-title">${title}</strong><br />
+      <small class="item-day">${day} ${date} <span class="cart-time">${time}</span></small>
+    </td>
+    <td class="cart-info">
+      <button id="decrease">-</button>
+      <span id="numberOfTickets">${numberOfTickets}</span>
+      <button id="increase">+</button>
+    </td>
+    <td class="cart-info" id="item-total">${itemSubtotal}</td>
+    </tr>`;
+    cartRow.innerHTML = cartRowContent;
+    cartItem.prepend(cartRow);
+    calculateCartTotal();
+  } else {
+    alert("Please enter a number between 0 and 100.");
+  }
 }
 
 // Click purchase button - return alert and clear cart
