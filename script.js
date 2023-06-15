@@ -1,18 +1,73 @@
+// console.log(new Date().getMonth() + 1 + "/" + new Date().getDate());
+
+// const imdbApiKey = "k_j6or1n6q";
+// const movieIds = ["tt10168670", "tt14444726", "tt13833688"];
+// const movieRatings = [];
+// const imdb = document.getElementsByClassName("imdb");
+
+// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[0]}`)
+//   .then((response) => {
+//     if (response.ok) {
+//       return response.json();
+//     } else {
+//       throw new Error("Error: Failed to retrieve movie rating.");
+//     }
+//   })
+//   .then((data) => {
+//     let rating = data.totalRating;
+//     imdb[0].textContent = rating;
+//     console.log(imdb[0].textContent);
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+
+// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[1]}`)
+//   .then((response) => {
+//     if (response.ok) {
+//       return response.json();
+//     } else {
+//       throw new Error("Error: Failed to retrieve movie rating.");
+//     }
+//   })
+//   .then((data) => {
+//     let rating = data.totalRating;
+//     imdb[1].textContent = rating;
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+
+// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[2]}`)
+//   .then((response) => {
+//     if (response.ok) {
+//       return response.json();
+//     } else {
+//       throw new Error("Error: Failed to retrieve movie rating.");
+//     }
+//   })
+//   .then((data) => {
+//     let rating = data.totalRating;
+//     imdb[2].textContent = rating;
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+
 // Collapse movie description
 
-const collapsible = document.getElementsByClassName("collapsible");
+const movieTitles = document.querySelectorAll(".movie-title");
 
-for (let i = 0; i < collapsible.length; i++) {
-  collapsible[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    let content = this.nextElementSibling;
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
+movieTitles.forEach(function (movieTitle) {
+  movieTitle.addEventListener("click", function () {
+    let collapsible = this.closest(".movie").querySelector(".collapsible");
+    if (collapsible.style.maxHeight) {
+      collapsible.style.maxHeight = null;
     } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+      collapsible.style.maxHeight = collapsible.scrollHeight + "px";
     }
   });
-}
+});
 
 const cartTable = document.querySelector(".cart-table");
 
@@ -25,6 +80,8 @@ const emptyCart = document.getElementById("empty-cart-message");
 const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
 const purchase = document.getElementById("purchase");
+
+// Add event listener to each add-to-cart button
 
 for (let i = 0; i < addToCartButtons.length; i++) {
   let button = addToCartButtons[i];

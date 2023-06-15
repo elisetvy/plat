@@ -45,6 +45,7 @@ table {
 
 td:not(
     .column-1,
+    .movie-title,
     .minutes,
     .rating,
     .imdb,
@@ -108,18 +109,9 @@ td:not(
   margin-top: 3rem;
 }
 
-.movie-1,
-.movie-2,
-.movie-3 {
+.movie {
   padding: 10px 0 5px 0;
   border-bottom: 1px solid black;
-}
-
-.movie-1-title,
-.movie-2-title,
-.movie-3-title {
-  display: flex;
-  justify-content: space-between;
 }
 
 /* Remove underline from links */
@@ -134,25 +126,36 @@ a:visited {
 
 /* Hide movie descriiptions */
 
-.content {
+.collapsible {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 
 .details {
-  width: auto;
-  display: flex;
-  justify-content: flex-end;
+  width: 100;
 }
 
-.minutes,
-.rating,
-.imdb {
-  padding: 0 10px;
+.movie-title {
+  width: 65.5%;
+}
+
+.minutes {
+  width: 17%;
+  padding: 0 15px;
+  text-align: right;
+}
+
+.rating {
+  width: 11.5%;
+  padding: 0 5px;
+  text-align: left;
 }
 
 .imdb {
+  width: 7%;
+  padding: 0 5px;
+  text-align: center;
   background-color: #f3ce13;
   border-radius: 5px;
 }
