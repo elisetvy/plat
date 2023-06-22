@@ -1,58 +1,82 @@
 // console.log(new Date().getMonth() + 1 + "/" + new Date().getDate());
 
-// const imdbApiKey = "k_j6or1n6q";
-// const movieIds = ["tt10168670", "tt14444726", "tt13833688"];
-// const movieRatings = [];
-// const imdb = document.getElementsByClassName("imdb");
+const imdbApiKey = "k_j6or1n6q";
+const movieIds = ["tt10168670", "tt14444726", "tt13833688"];
+const movieRatings = [];
+const imdb = document.getElementsByClassName("imdb");
+const tableMovieNames = document.getElementsByClassName("table-movie-name");
 
-// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[0]}`)
-//   .then((response) => {
-//     if (response.ok) {
-//       return response.json();
-//     } else {
-//       throw new Error("Error: Failed to retrieve movie rating.");
-//     }
-//   })
-//   .then((data) => {
-//     let rating = data.totalRating;
-//     imdb[0].textContent = rating;
-//     console.log(imdb[0].textContent);
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[0]}`)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Error: Failed to retrieve movie rating.");
+    }
+  })
+  .then((data) => {
+    let title = data.title;
+    movieTitles[0].textContent = title;
+    tableMovieNames[0].textContent = title;
+    let imdbLink = `https://www.imdb.com/title/${movieIds[0]}/`;
+    let rating = data.totalRating;
+    let anchor = document.createElement("a");
+    anchor.href = imdbLink;
+    anchor.target = "_blank";
+    anchor.textContent = rating;
+    imdb[0].appendChild(anchor);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
-// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[1]}`)
-//   .then((response) => {
-//     if (response.ok) {
-//       return response.json();
-//     } else {
-//       throw new Error("Error: Failed to retrieve movie rating.");
-//     }
-//   })
-//   .then((data) => {
-//     let rating = data.totalRating;
-//     imdb[1].textContent = rating;
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[1]}`)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Error: Failed to retrieve movie rating.");
+    }
+  })
+  .then((data) => {
+    let title = data.title;
+    movieTitles[1].textContent = title;
+    tableMovieNames[1].textContent = title;
+    let imdbLink = `https://www.imdb.com/title/${movieIds[1]}/`;
+    let rating = data.totalRating;
+    let anchor = document.createElement("a");
+    anchor.href = imdbLink;
+    anchor.target = "_blank";
+    anchor.textContent = rating;
+    imdb[1].appendChild(anchor);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
-// fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[2]}`)
-//   .then((response) => {
-//     if (response.ok) {
-//       return response.json();
-//     } else {
-//       throw new Error("Error: Failed to retrieve movie rating.");
-//     }
-//   })
-//   .then((data) => {
-//     let rating = data.totalRating;
-//     imdb[2].textContent = rating;
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+fetch(`https://imdb-api.com/en/API/UserRatings/${imdbApiKey}/${movieIds[2]}`)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Error: Failed to retrieve movie rating.");
+    }
+  })
+  .then((data) => {
+    let title = data.title;
+    movieTitles[2].textContent = title;
+    tableMovieNames[2].textContent = title;
+    let imdbLink = `https://www.imdb.com/title/${movieIds[2]}/`;
+    let rating = data.totalRating;
+    let anchor = document.createElement("a");
+    anchor.href = imdbLink;
+    anchor.target = "_blank";
+    anchor.textContent = rating;
+    imdb[2].appendChild(anchor);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 // Collapse movie description
 
